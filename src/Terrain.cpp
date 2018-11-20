@@ -10,7 +10,7 @@ Terrain::Terrain() {
 	for (int z = 0; z < Z_SEGMENTS-1; z++) {
 		for (int x = 0; x < X_SEGMENTS-1; x++) {
 			indices.push_back(x + (z * Z_SEGMENTS));
-			indices.push_back(x + (x * Z_SEGMENTS) + X_SEGMENTS);
+			indices.push_back(x + (z * Z_SEGMENTS) + X_SEGMENTS);
 			indices.push_back(z + (z * Z_SEGMENTS) + 1);
 
 			indices.push_back(x + (z * Z_SEGMENTS) + 1);
@@ -19,7 +19,7 @@ Terrain::Terrain() {
 		}
 	}
 	//TODO segfault here -> probably bad indices
-	//buffer.create((GLfloat*) vertices.data(), indices.data());
+	buffer.create((GLfloat*) vertices.data(), indices.data());
 }
 
 Terrain::~Terrain() {}
