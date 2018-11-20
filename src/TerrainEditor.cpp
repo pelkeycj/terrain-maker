@@ -3,7 +3,6 @@
 
 
 //TODOs:
-// - get camera working using temp triangle
 // - create flat terrain heightmap
 // - do magic to find verts to increase in height based on clicks
 TerrainEditor::TerrainEditor() {
@@ -26,19 +25,16 @@ TerrainEditor::TerrainEditor() {
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
 
-	//TODO temp-----------------------------------------------
-	glGenVertexArrays(1, &VAOId);
-	glBindVertexArray(VAOId);
 
-	GLfloat verts[] = {
-		-1.0f, -1.0f, 0.0f,
-  	 	1.0f, -1.0f, 0.0f,
-   		0.0f,  1.0f, 0.0f,
-	};
 
-	glGenBuffers(1, &VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_STATIC_DRAW);	
+	// //TODO temp-----------------------------------------------
+	// glGenVertexArrays(1, &VAOId);
+	// glBindVertexArray(VAOId);
+
+
+	// glGenBuffers(1, &VBO);
+	// glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	// glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_STATIC_DRAW);	
 
 	unsigned int vert, frag;
 	shaderId = glCreateProgram();
@@ -59,12 +55,12 @@ TerrainEditor::~TerrainEditor() {
 	SDL_Quit();
 }
 
-//TODO debug shader?
 
 
 void TerrainEditor::update() {
 	glUseProgram(shaderId);
 	Camera::instance().update(shaderId, WIDTH, HEIGHT);
+	terrain.update();
 }
 
 void TerrainEditor::render() {
@@ -72,14 +68,7 @@ void TerrainEditor::render() {
 	glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
-
-	//TODO temp
-	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-	glDisableVertexAttribArray(0);
-	///------------------------------
+	terrain.render();
 
 	SDL_Delay(50);
 }

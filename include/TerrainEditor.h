@@ -12,6 +12,7 @@
 #include <fstream>
 
 #include "Camera.h"
+#include "Terrain.h"
 
 
 const int WIDTH = 640;
@@ -31,12 +32,9 @@ private:
 
 	SDL_Window* window;
 	SDL_GLContext context;
-		
-	//TODO temp
-	GLuint VAOId;
-	GLuint VBO;
-	unsigned int shaderId;
 
+	unsigned int shaderId;
+	Terrain terrain;
 };
 
 #endif
