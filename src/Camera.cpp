@@ -1,5 +1,4 @@
 #include "Camera.h"
-#include <iostream>
 
 Camera& Camera::instance() {
     static Camera* instance = new Camera();
