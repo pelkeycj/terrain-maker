@@ -1,13 +1,14 @@
 #include "Buffer.h"
 
+#include <iostream>
+
 Buffer::Buffer() {}
 
 
 Buffer::~Buffer() {}
 
 
-//TODO fix indexing issue?
-// use Dynamic draw and glBufferSubData() to update 
+// TODO use Dynamic draw and glBufferSubData() to update 
 void Buffer::create(GLfloat* vdata, unsigned int* idata) {
 	glGenVertexArrays(1, &VAOId);
 	glBindVertexArray(VAOId);

@@ -18,11 +18,13 @@ Terrain::Terrain() {
 			indices.push_back(x + (z * Z_SEGMENTS) + Z_SEGMENTS + 1);
 		}
 	}
-	//TODO segfault here -> probably bad indices
-	buffer.create((GLfloat*) vertices.data(), indices.data());
 }
 
 Terrain::~Terrain() {}
+
+void Terrain::init() {
+	buffer.create((GLfloat*) vertices.data(), indices.data());
+}
 
 void Terrain::update() {
 	buffer.bind();

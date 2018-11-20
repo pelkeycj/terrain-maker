@@ -25,6 +25,7 @@ TerrainEditor::TerrainEditor() {
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
 
+	terrain.init();
 
 
 	// //TODO temp-----------------------------------------------
@@ -69,6 +70,7 @@ void TerrainEditor::render() {
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
 	terrain.render();
+	//TODO not rendering
 
 	SDL_Delay(50);
 }

@@ -11,7 +11,7 @@ class Terrain {
 public:
 	Terrain();
 	~Terrain();
-
+	void init();
 	void update();
 	void render();
 
