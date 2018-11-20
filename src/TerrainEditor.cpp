@@ -102,6 +102,12 @@ void handleKeydown(SDL_Event& event) {
 		case SDLK_DOWN:
 			Camera::instance().moveBack();
 			break;
+		case SDLK_TAB:
+			Camera::instance().moveUp();
+			break;
+		case SDLK_SPACE:
+			Camera::instance().moveDown();
+			break;
 		default:
 			break;
 	}
@@ -121,7 +127,7 @@ void TerrainEditor::run() {
 					handleKeydown(e);
 					break;
 				case SDL_MOUSEMOTION:
-					//TODO looks
+					Camera::instance().mouseLook(e.motion.x, e.motion.y);
 					break;
 				default:
 					break;
