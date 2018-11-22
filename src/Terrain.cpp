@@ -35,20 +35,19 @@ void Terrain::update() {
 }
 
 void Terrain::render() {
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glDrawElements(GL_TRIANGLES,
 		indices.size(),
 		GL_UNSIGNED_INT,
 		nullptr);
 }
 
-void Terrain::edit(float radius, glm::vec3 cameraPos, glm::vec3 cameraDir) {
+void Terrain::edit(float radius, float delta, glm::vec3 cameraPos, glm::vec3 cameraDir) {
 	glm::vec3 cameraDirUnit = glm::normalize(cameraDir);
 
 	srand(time(NULL));
 
 	for (auto& v : vertices) {
-		v.edit(radius, cameraPos, cameraDirUnit);
+		v.edit(radius, delta, cameraPos, cameraDirUnit);
 	}
 
 	buffer.addVertexData(vertices.size(), (GLfloat*) vertices.data());

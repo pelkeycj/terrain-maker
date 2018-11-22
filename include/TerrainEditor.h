@@ -15,8 +15,8 @@
 #include "Terrain.h"
 
 
-const int WIDTH = 640;
-const int HEIGHT = 480;
+const int WIDTH = 1280;
+const int HEIGHT = 960;
 
 class TerrainEditor {
 public:
@@ -28,6 +28,7 @@ private:
 	void render();
 	void update();
 	void handleKeydown(SDL_Event& event);
+	void setDelta(bool increase);
 	unsigned int createShader(std::string source, bool vertex);
 
 	void changeRadius(bool increase);
@@ -39,7 +40,9 @@ private:
 	Terrain terrain;
 
 	bool editing;
+	float delta{1.0f};
 	float radius{3.0f};
+	int mode{GL_FILL};
 };
 
 #endif

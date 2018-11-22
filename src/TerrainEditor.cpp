@@ -54,7 +54,7 @@ void TerrainEditor::update() {
 	glUniform1f(loc, radius);
 
 	if (editing) {
-		terrain.edit(radius, Camera::instance().getPosition(), Camera::instance().getDirection());
+		terrain.edit(radius, delta, Camera::instance().getPosition(), Camera::instance().getDirection());
 	}
 
 	terrain.update();
@@ -66,6 +66,7 @@ void TerrainEditor::render() {
 	glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
+	glPolygonMode(GL_FRONT_AND_BACK, mode);
 	terrain.render();
 
 	SDL_Delay(50);
@@ -73,6 +74,14 @@ void TerrainEditor::render() {
 
 void TerrainEditor::handleKeydown(SDL_Event& event) {
 	switch (event.key.keysym.sym) {
+		case SDLK_t:
+			std::cout << "hello\n";
+			if (mode == GL_FILL) {
+				mode = GL_POLYGON;
+			} else {
+				mode = GL_FILL;
+			}
+			break;
 		case SDLK_a:
 		case SDLK_LEFT:
 			Camera::instance().moveLeft();
@@ -109,6 +118,12 @@ void TerrainEditor::changeRadius(bool increase) {
 }
 
 
+void TerrainEditor::setDelta(bool increase) {
+	if ((increase && delta < 0) || (!increase && delta > 0)) {
+		delta *= -1;
+	} 
+}
+
 void TerrainEditor::run() {
 	bool quit = false;
 	SDL_Event e;
@@ -127,6 +142,7 @@ void TerrainEditor::run() {
 					break;
 				case SDL_MOUSEBUTTONDOWN:
 					editing = true;
+					setDelta(e.button.button == SDL_BUTTON_LEFT);
 					break;
 				case SDL_MOUSEBUTTONUP:
 					editing = false;

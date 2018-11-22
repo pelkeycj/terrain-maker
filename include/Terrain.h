@@ -21,7 +21,7 @@ public:
 	void init();
 	void update();
 	void render();
-	void edit(float radius, glm::vec3 cameraPos, glm::vec3 cameraDir);
+	void edit(float radius, float delta, glm::vec3 cameraPos, glm::vec3 cameraDir);
 
 private:
 	
@@ -34,12 +34,13 @@ private:
 
 		// distance algorithm from
 		// https://www.opengl.org/discussion_boards/showthread.php/138743-distance-between-a-line-and-a-point-in-3d
-		void edit(float radius, glm::vec3 cameraPos, glm::vec3 cameraDir) {
+		void edit(float radius, float delta, glm::vec3 cameraPos, glm::vec3 cameraDir) {
 			glm::vec3 p = cameraPos - glm::vec3(x, y, z);
 			float distance = sqrt(glm::dot(p, p) - pow(glm::dot(cameraDir, p), 2));
 			
 			if (distance < radius) {
-				y += std::min(0.4f, 1/(distance));
+				y += std::min(delta, delta * 1/(distance));
+				y = std::max(0.0f, y);
 			}	
 		}
 	};

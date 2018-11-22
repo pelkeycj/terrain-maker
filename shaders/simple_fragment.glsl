@@ -13,10 +13,20 @@ void main() {
 	float v = dot(normalize(cameraDir), p);
 	float dist = sqrt(dot(p, p) - (v * v));
 
-	if (dist < radius) {
-		FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+	if (pos.y <= 0.0) {
+		FragColor = vec4(0.0, 0.0, 1.0, 1.0);
+	} else if (pos.y < 2) {
+		FragColor = vec4(194/255.0, 178/255.0, 128/255.0, 1.0);
+	} else if (pos.y < 20) {
+		float height = pos.y  / 40.0 + 0.1;
+		FragColor = vec4(0.0, height, 0.0, 1.0);
+	} else if (pos.y < 25) {
+		FragColor = vec4(150/255.0, 75/255.0, 0.0, 1.0);
 	} else {
-		float height = pos.y  / 10.0;
-		FragColor = vec4(height, height, height, 1.0);
+		FragColor = vec4(1.0);
 	}
+
+	if (dist < radius) {
+		FragColor += vec4(1.0, 0.0, 0.0, -0.5);
+	} 
 }
