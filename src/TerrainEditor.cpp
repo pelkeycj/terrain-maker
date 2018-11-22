@@ -60,7 +60,6 @@ void TerrainEditor::render() {
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
 	terrain.render();
-	//TODO not rendering
 
 	SDL_Delay(50);
 }
@@ -94,6 +93,9 @@ void handleKeydown(SDL_Event& event) {
 	}
 }
 
+
+//TODO distance between verts and line 
+// https://www.opengl.org/discussion_boards/showthread.php/138743-distance-between-a-line-and-a-point-in-3d
 void TerrainEditor::run() {
 	bool quit = false;
 	SDL_Event e;
@@ -109,6 +111,9 @@ void TerrainEditor::run() {
 					break;
 				case SDL_MOUSEMOTION:
 					Camera::instance().mouseLook(e.motion.x, e.motion.y);
+					break;
+				case SDL_MOUSEWHEEL:
+					terrain.edit(Camera::instance().getPosition(), Camera::instance().getDirection());
 					break;
 				default:
 					break;

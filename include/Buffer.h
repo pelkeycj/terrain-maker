@@ -9,6 +9,7 @@ public:
 	~Buffer();
 	
 	void create(unsigned int vcount, GLfloat* vdata, unsigned int icount, unsigned int* idata);
+	void addVertexData(unsigned int vcount, GLfloat* vdata);
 	void bind();
 	void unbind();
 

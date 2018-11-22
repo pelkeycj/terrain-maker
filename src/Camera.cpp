@@ -65,7 +65,6 @@ glm::mat4 Camera::look() {
                         up);
 }
 
-
 void Camera::update(const unsigned int shaderId, const unsigned int width, const unsigned int height) {
 	glm::mat4 projection = glm::perspective(glm::radians(45.0f), ((float) width / (float) height), 0.1f, 100.0f);
 	GLint loc = glGetUniformLocation(shaderId, "projection");
@@ -77,4 +76,20 @@ void Camera::update(const unsigned int shaderId, const unsigned int width, const
 	glm::mat4 model = glm::mat4(1.0f); 
 	loc = glGetUniformLocation(shaderId, "model");
 	glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(model));
+
+
+	loc = glGetUniformLocation(shaderId, "cameraPos");
+	glUniform3fv(loc, 1, glm::value_ptr(position));
+	
+	loc = glGetUniformLocation(shaderId, "cameraDir");
+	glUniform3fv(loc, 1, glm::value_ptr(viewDir));
+
+}
+
+glm::vec3 Camera::getPosition() {
+	return position;
+}
+
+glm::vec3 Camera::getDirection() {
+	return viewDir;
 }

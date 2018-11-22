@@ -6,7 +6,7 @@
 #include "glm/gtx/transform.hpp"
 #include <glad/glad.h>
 
-const float MOVE_DELTA = 0.1f;
+const float MOVE_DELTA = 1.0f;
 
 class Camera {
 public:
@@ -23,6 +23,8 @@ public:
 	void update(const unsigned int shaderId, const unsigned int width, const unsigned int height);
 	void mouseLook(int x, int y);
 
+	glm::vec3 getPosition();
+	glm::vec3 getDirection();
 
 private:
 	glm::mat4 look();
