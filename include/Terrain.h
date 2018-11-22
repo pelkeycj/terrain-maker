@@ -8,7 +8,6 @@
 #include "Buffer.h"
 
 #include <stdlib.h>
-#include <time.h>
 #include <math.h>
 
 const int X_SEGMENTS = 1000;
@@ -39,7 +38,8 @@ private:
 			float distance = sqrt(glm::dot(p, p) - pow(glm::dot(cameraDir, p), 2));
 			
 			if (distance < radius) {
-				y += std::min(delta, delta * 1/(distance));
+				float change = delta * 1.0f/sqrt(distance);
+				y += std::min(delta, change);
 				y = std::max(0.0f, y);
 			}	
 		}

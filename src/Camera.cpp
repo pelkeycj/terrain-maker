@@ -6,8 +6,8 @@ Camera& Camera::instance() {
 }
 
 Camera::Camera() {
-	position = glm::vec3(0.0f, 0.0f, 3.0f);
-	viewDir = glm::vec3(0.0f, 0.0f, -1.0f);
+	position = glm::vec3(0.0f, 20.0f, 3.0f);
+	viewDir = glm::vec3(-10.0f, 0.0f, -10.0f);
 	up = glm::vec3(0.0f, 1.0f, 0.0f);
 	oldMousePos = glm::vec2(0, 0);
 }
@@ -27,6 +27,12 @@ void Camera::mouseLook(int x, int y) {
 	yaw += xoffset;
 	pitch += yoffset;
 
+	if (pitch > 89.0f) {
+		pitch = 89.0f;
+	} else if (pitch < -89.0f) {
+		pitch = -89.0f;
+	}
+
 	viewDir.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
 	viewDir.y = sin(glm::radians(pitch));
 	viewDir.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
@@ -43,14 +49,16 @@ void Camera::moveDown() {
 
 
 void Camera::moveForward() {
-	position += MOVE_DELTA * viewDir.x;
-	position += MOVE_DELTA * viewDir.z;
+	glm::vec3 norm = glm::normalize(glm::vec3(viewDir.x, 0.0f, viewDir.z));
+	position.x += MOVE_DELTA * norm.x;
+	position.z += MOVE_DELTA * norm.z;
 
 }
 
 void Camera::moveBack() {
-	position.x -= MOVE_DELTA * viewDir.x;
-	position.z -= MOVE_DELTA * viewDir.z;
+	glm::vec3 norm = glm::normalize(glm::vec3(viewDir.x, 0.0f, viewDir.z));
+	position.x -= MOVE_DELTA * norm.x;
+	position.z -= MOVE_DELTA * norm.z;
 }
 
 void Camera::moveLeft() {

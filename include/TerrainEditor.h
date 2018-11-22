@@ -42,7 +42,7 @@ private:
 	bool editing;
 	float delta{1.0f};
 	float radius{3.0f};
-	int mode{GL_FILL};
+	int mode{GL_LINE};
 };
 
 #endif
