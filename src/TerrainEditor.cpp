@@ -50,6 +50,13 @@ TerrainEditor::~TerrainEditor() {
 
 void TerrainEditor::update() {
 	glUseProgram(shaderId);
+	GLuint loc = glGetUniformLocation(shaderId, "radius");
+	glUniform1f(loc, radius);
+
+	if (editing) {
+		terrain.edit(radius, Camera::instance().getPosition(), Camera::instance().getDirection());
+	}
+
 	terrain.update();
 	Camera::instance().update(shaderId, WIDTH, HEIGHT);
 }
@@ -64,7 +71,7 @@ void TerrainEditor::render() {
 	SDL_Delay(50);
 }
 
-void handleKeydown(SDL_Event& event) {
+void TerrainEditor::handleKeydown(SDL_Event& event) {
 	switch (event.key.keysym.sym) {
 		case SDLK_a:
 		case SDLK_LEFT:
@@ -93,9 +100,15 @@ void handleKeydown(SDL_Event& event) {
 	}
 }
 
+void TerrainEditor::changeRadius(bool increase) {
+	if (increase) {
+		radius += 1.0f;
+	} else {
+		radius = std::max(1.0f, radius - 1.0f);
+	}
+}
 
-//TODO distance between verts and line 
-// https://www.opengl.org/discussion_boards/showthread.php/138743-distance-between-a-line-and-a-point-in-3d
+
 void TerrainEditor::run() {
 	bool quit = false;
 	SDL_Event e;
@@ -112,8 +125,14 @@ void TerrainEditor::run() {
 				case SDL_MOUSEMOTION:
 					Camera::instance().mouseLook(e.motion.x, e.motion.y);
 					break;
+				case SDL_MOUSEBUTTONDOWN:
+					editing = true;
+					break;
+				case SDL_MOUSEBUTTONUP:
+					editing = false;
+					break;					
 				case SDL_MOUSEWHEEL:
-					terrain.edit(Camera::instance().getPosition(), Camera::instance().getDirection());
+					changeRadius(e.wheel.y > 0);
 					break;
 				default:
 					break;
@@ -125,7 +144,6 @@ void TerrainEditor::run() {
 		SDL_GL_SwapWindow(window);
 	}
 }
-
 
 
 // TODO pull out

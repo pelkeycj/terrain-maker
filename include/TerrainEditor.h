@@ -27,14 +27,19 @@ public:
 private:
 	void render();
 	void update();
-	void handleKeyDown(SDL_Event& event);
+	void handleKeydown(SDL_Event& event);
 	unsigned int createShader(std::string source, bool vertex);
+
+	void changeRadius(bool increase);
 
 	SDL_Window* window;
 	SDL_GLContext context;
 
 	unsigned int shaderId;
 	Terrain terrain;
+
+	bool editing;
+	float radius{3.0f};
 };
 
 #endif

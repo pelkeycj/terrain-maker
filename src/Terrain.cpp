@@ -42,14 +42,14 @@ void Terrain::render() {
 		nullptr);
 }
 
-void Terrain::edit(glm::vec3 cameraPos, glm::vec3 cameraDir) {
+void Terrain::edit(float radius, glm::vec3 cameraPos, glm::vec3 cameraDir) {
 	glm::vec3 cameraDirUnit = glm::normalize(cameraDir);
 
 	srand(time(NULL));
 
 	for (auto& v : vertices) {
-		v.edit(cameraPos, cameraDirUnit);
+		v.edit(radius, cameraPos, cameraDirUnit);
 	}
-	
+
 	buffer.addVertexData(vertices.size(), (GLfloat*) vertices.data());
 }

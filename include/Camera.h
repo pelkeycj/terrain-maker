@@ -22,7 +22,6 @@ public:
 	void moveDown();
 	void update(const unsigned int shaderId, const unsigned int width, const unsigned int height);
 	void mouseLook(int x, int y);
-
 	glm::vec3 getPosition();
 	glm::vec3 getDirection();
 

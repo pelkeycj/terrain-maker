@@ -5,6 +5,7 @@ in vec3 pos;
 
 uniform vec3 cameraPos;
 uniform vec3 cameraDir;
+uniform float radius;
 
 void main() {
 
@@ -12,7 +13,7 @@ void main() {
 	float v = dot(normalize(cameraDir), p);
 	float dist = sqrt(dot(p, p) - (v * v));
 
-	if (dist < 2.5) {
+	if (dist < radius) {
 		FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 	} else {
 		float height = pos.y  / 10.0;
