@@ -67,7 +67,7 @@ glm::mat4 Camera::look() {
 
 
 void Camera::update(const unsigned int shaderId, const unsigned int width, const unsigned int height) {
-	glm::mat4 projection = glm::perspective(glm::radians(45.0f), ((float) width / (float) height), 0.1f, 20.0f);
+	glm::mat4 projection = glm::perspective(glm::radians(45.0f), ((float) width / (float) height), 0.1f, 100.0f);
 	GLint loc = glGetUniformLocation(shaderId, "projection");
 	glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(projection));
 	

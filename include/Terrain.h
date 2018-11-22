@@ -5,8 +5,8 @@
 #include <glad/glad.h>
 #include "Buffer.h"
 
-const int X_SEGMENTS = 1000;
-const int Z_SEGMENTS = 1000;
+const int X_SEGMENTS = 100;
+const int Z_SEGMENTS = 100;
 class Terrain {
 public:
 	Terrain();
@@ -25,6 +25,7 @@ private:
 	};
 
 	std::vector<Vertex> vertices;
+	std::vector<float> verts;
 	std::vector<unsigned int> indices;
 	Buffer buffer;
 };

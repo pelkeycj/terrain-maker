@@ -8,7 +8,7 @@ public:
 	Buffer();
 	~Buffer();
 	
-	void create(GLfloat* vdata, unsigned int* idata);
+	void create(unsigned int vcount, GLfloat* vdata, unsigned int icount, unsigned int* idata);
 	void bind();
 	void unbind();
 

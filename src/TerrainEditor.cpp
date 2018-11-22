@@ -27,16 +27,6 @@ TerrainEditor::TerrainEditor() {
 
 	terrain.init();
 
-
-	// //TODO temp-----------------------------------------------
-	// glGenVertexArrays(1, &VAOId);
-	// glBindVertexArray(VAOId);
-
-
-	// glGenBuffers(1, &VBO);
-	// glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	// glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_STATIC_DRAW);	
-
 	unsigned int vert, frag;
 	shaderId = glCreateProgram();
 	vert = createShader("./shaders/simple_vertex.glsl", true);
@@ -60,8 +50,8 @@ TerrainEditor::~TerrainEditor() {
 
 void TerrainEditor::update() {
 	glUseProgram(shaderId);
-	Camera::instance().update(shaderId, WIDTH, HEIGHT);
 	terrain.update();
+	Camera::instance().update(shaderId, WIDTH, HEIGHT);
 }
 
 void TerrainEditor::render() {
