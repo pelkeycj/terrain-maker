@@ -30,7 +30,6 @@ private:
 		Vertex(float _x, float _y, float _z)
 		: x(_x), y(_y), z(_z) {}
 
-
 		// distance algorithm from
 		// https://www.opengl.org/discussion_boards/showthread.php/138743-distance-between-a-line-and-a-point-in-3d
 		void edit(float radius, float delta, glm::vec3 cameraPos, glm::vec3 cameraDir) {

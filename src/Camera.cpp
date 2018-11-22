@@ -6,8 +6,8 @@ Camera& Camera::instance() {
 }
 
 Camera::Camera() {
-	position = glm::vec3(0.0f, 20.0f, 3.0f);
-	viewDir = glm::vec3(-10.0f, 0.0f, -10.0f);
+	position = glm::vec3(500.0f, 50.0f, 500.0f);
+	viewDir = glm::vec3(0.0f, 0.0f, 0.0f);
 	up = glm::vec3(0.0f, 1.0f, 0.0f);
 	oldMousePos = glm::vec2(0, 0);
 }
@@ -16,7 +16,7 @@ Camera::~Camera() {}
 
 void Camera::mouseLook(int x, int y) {
 	float xoffset = x - oldMousePos.x;
-	float yoffset = y - oldMousePos.y;
+	float yoffset =  oldMousePos.y - y;
 	oldMousePos.x = x;
 	oldMousePos.y = y;
 
@@ -27,11 +27,11 @@ void Camera::mouseLook(int x, int y) {
 	yaw += xoffset;
 	pitch += yoffset;
 
-	if (pitch > 89.0f) {
-		pitch = 89.0f;
-	} else if (pitch < -89.0f) {
-		pitch = -89.0f;
-	}
+    if (pitch > 89.0f)
+        pitch = 89.0f;
+    if (pitch < -89.0f)
+        pitch = -89.0f;
+
 
 	viewDir.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
 	viewDir.y = sin(glm::radians(pitch));
