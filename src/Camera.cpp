@@ -43,12 +43,14 @@ void Camera::moveDown() {
 
 
 void Camera::moveForward() {
-	position += MOVE_DELTA * viewDir;
+	position += MOVE_DELTA * viewDir.x;
+	position += MOVE_DELTA * viewDir.z;
 
 }
 
 void Camera::moveBack() {
-	position -= MOVE_DELTA * viewDir;
+	position.x -= MOVE_DELTA * viewDir.x;
+	position.z -= MOVE_DELTA * viewDir.z;
 }
 
 void Camera::moveLeft() {

@@ -75,9 +75,8 @@ void TerrainEditor::render() {
 void TerrainEditor::handleKeydown(SDL_Event& event) {
 	switch (event.key.keysym.sym) {
 		case SDLK_t:
-			std::cout << "hello\n";
 			if (mode == GL_FILL) {
-				mode = GL_POLYGON;
+				mode = GL_LINE;
 			} else {
 				mode = GL_FILL;
 			}
