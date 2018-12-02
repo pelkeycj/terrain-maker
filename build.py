@@ -20,12 +20,12 @@ if platform.system()=="Linux":
     LIBRARIES="-lSDL2 -ldl"
 elif platform.system()=="Darwin":
     ARGUMENTS="-D MAC" # -D is a #define sent to the preprocessor.
-    INCLUDE_DIR="-I ./include/ -I/Library/Frameworks/SDL2.framework/Headers -I./../common/thirdparty/old/glm"
+    INCLUDE_DIR="-I ./include/ -I/Library/Frameworks/SDL2.framework/Headers -I./common/thirdparty/old/glm"
     LIBRARIES="-F/Library/Frameworks -framework SDL2"
 elif platform.system()=="Windows":
     COMPILER="g++ -std=c++14" # Note we use g++ here as it is more likely what you have
     ARGUMENTS="-D MINGW -std=c++14 -static-libgcc -static-libstdc++" 
-    INCLUDE_DIR="-I./include/ -I./../common/thirdparty/old/glm/"
+    INCLUDE_DIR="-I./include/ -I./common/thirdparty/old/glm/"
     EXECUTABLE="lab.exe"
     LIBRARIES="-lmingw32 -lSDL2main -lSDL2 -mwindows"
 # (2)=================== Platform specific configuration ===================== #
