@@ -2,9 +2,6 @@
 #include <iostream>
 
 
-//TODOs:
-// - create flat terrain heightmap
-// - do magic to find verts to increase in height based on clicks
 TerrainEditor::TerrainEditor() {
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
@@ -161,7 +158,6 @@ void TerrainEditor::run() {
 }
 
 
-// TODO pull out
 unsigned int TerrainEditor::createShader(std::string source, bool vertex) {
 	unsigned int shaderId;
 	if (vertex) {

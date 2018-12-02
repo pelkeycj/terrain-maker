@@ -1,8 +1,7 @@
 #include "Terrain.h"
 
+// create a flat terrain mesh
 Terrain::Terrain() {
-	srand(time(NULL));
-
 	for (int z = 0; z < Z_SEGMENTS; z++) {
 		for (int x = 0; x < X_SEGMENTS; x++) {
 			vertices.push_back(Vertex(x, 0.0f , z));
@@ -42,12 +41,9 @@ void Terrain::render() {
 }
 
 void Terrain::edit(float radius, float delta, glm::vec3 cameraPos, glm::vec3 cameraDir) {
-	glm::vec3 cameraDirUnit = glm::normalize(cameraDir);
-
-	srand(time(NULL));
-
+	glm::vec3 normalized = glm::normalize(cameraDir);
 	for (auto& v : vertices) {
-		v.edit(radius, delta, cameraPos, cameraDirUnit);
+		v.edit(radius, delta, cameraPos, normalized);
 	}
 
 	buffer.addVertexData(vertices.size(), (GLfloat*) vertices.data());
