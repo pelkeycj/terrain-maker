@@ -1,7 +1,6 @@
 # Final Project - Computer Graphics
 
-
-## Edit this line: Put your link to your youtube video here (see deliverables).
+## https://youtu.be/1mDfaDnn0ds
 
 * Name and partners name(At most teams of 3 folks total)
   * Team member 1: Connor Pelkey
