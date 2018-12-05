@@ -7,8 +7,6 @@ Buffer::Buffer() {}
 
 Buffer::~Buffer() {}
 
-
-// TODO use Dynamic draw and glBufferSubData() to update
 void Buffer::create(unsigned int vcount, GLfloat* vdata, unsigned int icount, unsigned int* idata) {
 	glGenVertexArrays(1, &VAOId);
 	glBindVertexArray(VAOId);

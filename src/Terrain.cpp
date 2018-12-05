@@ -4,6 +4,7 @@
 
 // create a flat terrain mesh
 Terrain::Terrain() {
+	srand(time(NULL));
 	for (int z = 0; z < Z_SEGMENTS; z++) {
 		for (int x = 0; x < X_SEGMENTS; x++) {
 			vertices.push_back(Vertex(x, 0.0f , z));
