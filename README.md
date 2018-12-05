@@ -6,13 +6,26 @@
 * Name and partners name(At most teams of 3 folks total)
   * Team member 1: Connor Pelkey
   * Team member 2: Luke Bakker
-* How many hours did it take you to complete this final project? 
-* Did you collaborate or share ideas with any other students/TAs/Professors?
+* How many hours did it take you to complete this final project? 20
+* Did you collaborate or share ideas with any other students/TAs/Professors? No
 * Did you use any external resources? 
   * Note it is fair to utilize some tutorials--cite them here, and make sure to add your own personal touch!
-
+  - https://www.opengl.org/discussion_boards/showthread.php/138743-distance-between-a-line-and-a-point-in-3d (distance between points and lines)
+  - https://learnopengl.com/ (used for support code such as camera, terrain)
   * (Optional) What was the most interesting part of the Final Assignment? How could the instructor improve the final project?
  
+
+
+## Running
+- move camera w/ WASD + up/down w/ TAB and SPACE
+- change edit radius by scrolling up/down
+- increase/decrease height by left/right clicking on mouse
+- toggle wireframe mode with T
+- start a new terrain by running `./terrain`
+- save the current terrain to `example.obj` with N
+- load an existing terrain `example.obj` by running `./terrain example.obj`
+
+
 ## Description
 
 An important part of any computer graphics course, in my opinion, is having the opportunity to build a project that you care about. The final project in this course showcases your creativity from what you have learned over the semester and can be used as a portfolio piece for future internship, co-op, and full-time job opportunities.  We have covered enough computer graphics now that you are ready to design and create a project from scratch.
