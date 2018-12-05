@@ -1,20 +1,16 @@
 # Final Project - Computer Graphics
 
-*TODO*: Please edit the following information in your assignment
 
 ## Edit this line: Put your link to your youtube video here (see deliverables).
 
 * Name and partners name(At most teams of 3 folks total)
-  * Team member 1: *edit this*
-  * Team member 2: *edit this*
-  * Team member 3: *edit this*
+  * Team member 1: Connor Pelkey
+  * Team member 2: Luke Bakker
 * How many hours did it take you to complete this final project? 
 * Did you collaborate or share ideas with any other students/TAs/Professors?
 * Did you use any external resources? 
   * Note it is fair to utilize some tutorials--cite them here, and make sure to add your own personal touch!
-  * *edit this*
-  * *edit this*
-  * *edit this*
+
   * (Optional) What was the most interesting part of the Final Assignment? How could the instructor improve the final project?
  
 ## Description
@@ -77,6 +73,10 @@ My suggested strategy for this project is to:
 Use the `build.py`. You can modify build.py to your needs, but I should be able to type `python build.py` and then run the generated executable. I plan to spend 0 time figuring out what dependencies to download. If there is some setup extraneous setup needed to run your project, we should arrange to demonstrate your project during office hours.
 
 Pretend you are deploying this software to someone who has no idea what your code does and needs to be able to run it. The only assumption you should make is the user has SDL2 setup and perhaps a web browser.
+
+TO RUN:
+
+running build.py and then the generated executable will work and will generate a blank terrain. To load a terrain from an .obj file put the filename as an argument after the executable.
 
 ### Video deliverable
 
