@@ -1,4 +1,6 @@
 #include "Terrain.h"
+#include <iostream>
+#include <fstream>
 
 // create a flat terrain mesh
 Terrain::Terrain() {
@@ -21,6 +23,23 @@ Terrain::Terrain() {
             indices.push_back(vertexIndex + X_SEGMENTS + 1);
         }
     }
+}
+// Creates a new terrain based on the saved terrain.
+Terrain::Terrain(std::string fileName) {
+	vertices.clear();
+	indices.clear();
+
+	objFileLoader myObj = objFileLoader(fileName);
+	faceList = myObj.getFaces();
+	vertexList = myObj.getVertexes();
+
+	for(int ii = 0; ii < vertexList.size(); ii+=3) {
+		vertices.push_back(Vertex(vertexList[ii], vertexList[ii + 1], vertexList[ii + 2]));
+	}
+
+	for(int jj = 0; jj < faceList.vertexIndexes.size(); jj++) {
+		indices.push_back(faceList.vertexIndexes[jj]);
+	}
 }
 
 Terrain::~Terrain() {}
@@ -47,4 +66,22 @@ void Terrain::edit(float radius, float delta, glm::vec3 cameraPos, glm::vec3 cam
 	}
 
 	buffer.addVertexData(vertices.size(), (GLfloat*) vertices.data());
+}
+
+// Saves out the current terrain as an .obj file.
+void Terrain::saveFile() {
+	std::ofstream out;
+	out.open("example.obj");
+
+	for (auto& v : vertices) {
+		out << "v " << v.getX() << " " << v.getY() << " " << v.getZ() << std::endl;
+	}
+
+	for(int ii = 0; ii < indices.size(); ii+=3)  {
+		out << "f " << indices.at(ii) + 1 << "/" << indices.at(ii + 1) + 1 <<
+		"/" << indices.at(ii + 2) + 1 << std::endl;
+	}
+
+	out.close();
+
 }
