@@ -3,7 +3,7 @@
 
 #if defined(LINUX) || defined(MINGW)
 	#include <SDL2/SDL.h>
-#else 
+#else
 	#include <SDL.h>
 #endif
 
@@ -23,6 +23,8 @@ public:
 	TerrainEditor();
 	~TerrainEditor();
 	void run();
+	void start();
+	void startWithFile(std::string fileName);
 
 private:
 	void render();

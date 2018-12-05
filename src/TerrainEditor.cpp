@@ -22,8 +22,6 @@ TerrainEditor::TerrainEditor() {
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
 
-	terrain.init();
-
 	unsigned int vert, frag;
 	shaderId = glCreateProgram();
 	vert = createShader("./shaders/simple_vertex.glsl", true);
@@ -100,6 +98,9 @@ void TerrainEditor::handleKeydown(SDL_Event& event) {
 		case SDLK_SPACE:
 			Camera::instance().moveDown();
 			break;
+		case SDLK_n:
+			terrain.saveFile();
+			break;
 		default:
 			break;
 	}
@@ -117,13 +118,25 @@ void TerrainEditor::changeRadius(bool increase) {
 void TerrainEditor::setDelta(bool increase) {
 	if ((increase && delta < 0) || (!increase && delta > 0)) {
 		delta *= -1;
-	} 
+	}
+}
+
+// Uses the saved file to create a terrain
+void TerrainEditor::startWithFile(std::string fileName) {
+	terrain = Terrain(fileName);
+	terrain.init();
+	run();
+}
+
+void TerrainEditor::start() {
+	terrain.init();
+	run();
 }
 
 void TerrainEditor::run() {
 	bool quit = false;
 	SDL_Event e;
-	
+
 	while (!quit) {
 		while(SDL_PollEvent(&e) != 0) {
 			switch (e.type) {
@@ -142,7 +155,7 @@ void TerrainEditor::run() {
 					break;
 				case SDL_MOUSEBUTTONUP:
 					editing = false;
-					break;					
+					break;
 				case SDL_MOUSEWHEEL:
 					changeRadius(e.wheel.y > 0);
 					break;
