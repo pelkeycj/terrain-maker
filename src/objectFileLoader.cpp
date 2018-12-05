@@ -54,7 +54,6 @@
     }
   }
     // Closes the file we are reading from
-    std::cout << "END OBJ LOADING" << std::endl;
     inFile.close();
   }
   // Desctructor
