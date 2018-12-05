@@ -6,9 +6,13 @@
 	// create flat heightmap
 #include "TerrainEditor.h"
 
-int main() {
+int main( int argc, char** argv) {
 	TerrainEditor editor;
-	editor.run();
-	
+	if(argc == 2) {
+		editor.startWithFile(argv[1]);
+	} else {
+		editor.start();
+	}
+
 	return 0;
 }
