@@ -25,8 +25,10 @@ Terrain::Terrain() {
         }
     }
 }
+
 // Creates a new terrain based on the saved terrain.
 Terrain::Terrain(std::string fileName) {
+	srand(time(NULL));
 	vertices.clear();
 	indices.clear();
 
