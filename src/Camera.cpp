@@ -6,7 +6,7 @@ Camera& Camera::instance() {
 }
 
 Camera::Camera() {
-	position = glm::vec3(500.0f, 50.0f, 500.0f);
+	position = glm::vec3(100.0f, 50.0f, 100.0f);
 	viewDir = glm::vec3(0.0f, 0.0f, 0.0f);
 	up = glm::vec3(0.0f, 1.0f, 0.0f);
 	oldMousePos = glm::vec2(0, 0);
@@ -79,18 +79,18 @@ void Camera::update(const unsigned int shaderId, const unsigned int width, const
 	glm::mat4 projection = glm::perspective(glm::radians(45.0f), ((float) width / (float) height), 0.1f, 500.0f);
 	GLint loc = glGetUniformLocation(shaderId, "projection");
 	glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(projection));
-	
+
 	loc = glGetUniformLocation(shaderId, "view");
 	glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(look()));
 
-	glm::mat4 model = glm::mat4(1.0f); 
+	glm::mat4 model = glm::mat4(1.0f);
 	loc = glGetUniformLocation(shaderId, "model");
 	glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(model));
 
 
 	loc = glGetUniformLocation(shaderId, "cameraPos");
 	glUniform3fv(loc, 1, glm::value_ptr(position));
-	
+
 	loc = glGetUniformLocation(shaderId, "cameraDir");
 	glUniform3fv(loc, 1, glm::value_ptr(viewDir));
 
