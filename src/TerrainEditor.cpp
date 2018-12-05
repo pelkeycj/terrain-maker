@@ -128,6 +128,13 @@ void TerrainEditor::startWithFile(std::string fileName) {
 	run();
 }
 
+// Starts a terrain editor with dimensions
+void TerrainEditor::startWithDimensions(int x, int z) {
+	terrain = Terrain(x, z);
+	terrain.init();
+	run();
+}
+
 void TerrainEditor::start() {
 	terrain.init();
 	run();

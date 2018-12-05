@@ -18,7 +18,9 @@ const int Z_SEGMENTS = 200;
 class Terrain {
 public:
 	Terrain();
+	Terrain(int x, int z);
 	Terrain(std::string fileName);
+	void buildTerrain(int x, int z);
 	~Terrain();
 	void init();
 	void update();

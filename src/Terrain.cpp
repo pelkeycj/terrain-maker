@@ -4,24 +4,33 @@
 
 // create a flat terrain mesh
 Terrain::Terrain() {
-	srand(time(NULL));
-	for (int z = 0; z < Z_SEGMENTS; z++) {
-		for (int x = 0; x < X_SEGMENTS; x++) {
+	buildTerrain(X_SEGMENTS, Z_SEGMENTS);
+}
+
+Terrain::Terrain(int xSegs, int zSegs) {
+	buildTerrain(xSegs, zSegs);
+}
+
+// create a flat terrain mesh
+void Terrain::buildTerrain(int xSegs, int zSegs) {
+	std::cout << xSegs << " "<<  zSegs<< std::endl;
+	for (int z = 0; z < zSegs; z++) {
+		for (int x = 0; x < xSegs; x++) {
 			vertices.push_back(Vertex(x, 0.0f , z));
 		}
 	}
 
-    for (unsigned int z = 0; z < Z_SEGMENTS-1; z++) {
-    	for (unsigned int x = 0; x < X_SEGMENTS-1; x++ ) {
-            int vertexIndex = (z * X_SEGMENTS) + x;
+    for (unsigned int z = 0; z < zSegs-1; z++) {
+    	for (unsigned int x = 0; x < xSegs-1; x++ ) {
+            int vertexIndex = (z * xSegs) + x;
 
             indices.push_back(vertexIndex);
-            indices.push_back(vertexIndex + X_SEGMENTS + 1);
+            indices.push_back(vertexIndex + xSegs + 1);
             indices.push_back(vertexIndex + 1);
 
             indices.push_back(vertexIndex);
-            indices.push_back(vertexIndex + X_SEGMENTS);
-            indices.push_back(vertexIndex + X_SEGMENTS + 1);
+            indices.push_back(vertexIndex + xSegs);
+            indices.push_back(vertexIndex + xSegs + 1);
         }
     }
 }

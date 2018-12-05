@@ -25,6 +25,7 @@ public:
 	void run();
 	void start();
 	void startWithFile(std::string fileName);
+	void startWithDimensions(int x, int z);
 
 private:
 	void render();
