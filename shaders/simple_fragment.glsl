@@ -27,6 +27,6 @@ void main() {
 	}
 
 	if (dist < radius) {
-		FragColor += vec4(1.0, 0.0, 0.0, -0.5);
+		FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 	} 
 }

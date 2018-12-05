@@ -6,7 +6,7 @@ Camera& Camera::instance() {
 }
 
 Camera::Camera() {
-	position = glm::vec3(500.0f, 50.0f, 500.0f);
+	position = glm::vec3(0.0f, 100.0f, 0.0f);
 	viewDir = glm::vec3(0.0f, 0.0f, 0.0f);
 	up = glm::vec3(0.0f, 1.0f, 0.0f);
 	oldMousePos = glm::vec2(0, 0);
