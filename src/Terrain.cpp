@@ -13,7 +13,6 @@ Terrain::Terrain(int xSegs, int zSegs) {
 
 // create a flat terrain mesh
 void Terrain::buildTerrain(int xSegs, int zSegs) {
-	std::cout << xSegs << " "<<  zSegs<< std::endl;
 	for (int z = 0; z < zSegs; z++) {
 		for (int x = 0; x < xSegs; x++) {
 			vertices.push_back(Vertex(x, 0.0f , z));
