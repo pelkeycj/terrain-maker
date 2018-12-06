@@ -46,8 +46,10 @@ private:
 
 			if (distance < radius) {
 				float change = delta * 1.0f/sqrt(sqrt(distance));
+				change = std::min(delta, change);
 				change *= (1.0f + ((rand() % 20) -10) / 100.0f);
-				y += std::min(delta, change);
+
+				y += change;
 				y = std::max(0.0f, y);
 			}
 		}
